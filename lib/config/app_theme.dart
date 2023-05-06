@@ -5,6 +5,9 @@ class AppTheme {
 
   static ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: AppColors.lightPrimaryColor ,
+    textTheme: TextTheme(
+      bodyLarge: TextStyle(color: Color(0xffa67c00) , fontSize: 20 , fontWeight: FontWeight.bold) ,
+    )
   );
 
   static ThemeData darkTheme = ThemeData(
