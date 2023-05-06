@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:my_app/home/home_screen.dart';
+import 'package:my_app/register/register_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   @override
@@ -36,7 +37,7 @@ class SplashScreen extends StatelessWidget {
                   child: AnimatedTextKit(
                     isRepeatingAnimation: false,
                     onFinished: (){
-                      Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+                      Navigator.pushReplacementNamed(context, RegisterScreen.routeName);
                     },
                     animatedTexts: [
                       RotateAnimatedText('AWESOME'),
