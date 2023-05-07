@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_app/core/app_routes.dart';
 import 'package:my_app/register/auth_bloc_cubit.dart';
 import 'package:my_app/register/widgets/text_field_widget.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import '../core/app_strings.dart';
 
 class RegisterScreen extends StatelessWidget {

@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:my_app/api_manager/api_manager.dart';
+import 'package:my_app/prefs/shared_prefs.dart';
 part 'auth_bloc_state.dart';
 
 
@@ -11,6 +12,7 @@ class AuthCubit extends Cubit <AuthStates> {
     emit(LoadingState());
    var response =  await ApiManager.registerCall(email: email, phone: phone, password: password, name: name);
    if (response.status == true){
+     await Cache.saveTokenInCache(key: "token", value: response.data!.token!);
      emit(RegisterSuccessState());
    }else if (response.status == false){
      emit(RegisterFailedState(message: response.message ?? ""));
@@ -22,6 +24,7 @@ class AuthCubit extends Cubit <AuthStates> {
    var response =  await ApiManager.loginCall(email: email, password: password);
 
    if (response.status == true){
+     await Cache.saveTokenInCache(key: "token", value: response.data!.token!);
      emit(RegisterSuccessState());
    }else if (response.status == false){
      emit(RegisterFailedState(message: response.message ?? ""));

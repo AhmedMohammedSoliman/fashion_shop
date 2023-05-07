@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:my_app/home/Banners/banners_model.dart';
 import 'package:my_app/login/Login_Model.dart';
-
+import 'package:my_app/my_app.dart';
+import 'package:my_app/profile/profile_model.dart';
 import '../register/Register_model.dart';
 
 class ApiManager {
@@ -63,6 +65,35 @@ class ApiManager {
     }finally {
       print("login finally");
     }
+  }
+
+  static Future<ProfileModel> getProfileCall ()async{
+
+    var url = Uri.parse("https://student.valuxapps.com/api/profile");
+
+    var response = await http.get(url , headers: {
+      "Authorization" : MyApp.getUserToken()!,
+      "lang" : "en"
+    });
+    var body = response.body;
+    var json = jsonDecode(body);
+    var profileObject = ProfileModel.fromJson(json);
+
+    return profileObject ;
+  }
+
+
+  static Future<BannersModel> getBannersCall ()async{
+    var url = Uri.parse("https://student.valuxapps.com/api/banners");
+    
+    var response = await http.get(url);
+
+    var body = response.body ;
+
+    var json = jsonDecode(body);
+    var bannerObject = BannersModel.fromJson(json);
+
+    return bannerObject ;
   }
 
 

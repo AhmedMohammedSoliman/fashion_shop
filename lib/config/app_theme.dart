@@ -7,6 +7,10 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.lightPrimaryColor ,
     textTheme: TextTheme(
       bodyLarge: TextStyle(color: Color(0xffa67c00) , fontSize: 20 , fontWeight: FontWeight.bold) ,
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      selectedItemColor: Colors.blue ,
+      unselectedItemColor: Colors.black
     )
   );
 
