@@ -18,7 +18,7 @@ void main() async {
         create: (context) => ProfileCubit(),
       ),
       BlocProvider(
-        create: (context) => HomeCubit(),
+        create: (context) => HomeCubit()..bannerFun()..categoryFun()..productsHomeFun(),
       ),
     ],
     child: MyApp(),

@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:my_app/home/Banners/banners_model.dart';
+import 'package:my_app/home/Banners/categories_model.dart';
+import 'package:my_app/home/Banners/products_home_model.dart';
 import 'package:my_app/login/Login_Model.dart';
 import 'package:my_app/my_app.dart';
 import 'package:my_app/profile/profile_model.dart';
@@ -94,6 +96,37 @@ class ApiManager {
     var bannerObject = BannersModel.fromJson(json);
 
     return bannerObject ;
+  }
+
+  static Future<CategoriesModel> getAllCategories ()async{
+    var url = Uri.parse("https://student.valuxapps.com/api/categories");
+
+    var response = await http.get(url);
+
+    var body = response.body ;
+
+    var json = jsonDecode(body) ;
+
+    var categoriesObject = CategoriesModel.fromJson(json);
+
+    return categoriesObject ;
+  }
+
+
+  static Future <ProductsHomeModel> getHomeProducts () async{
+
+    var url = Uri.parse("https://student.valuxapps.com/api/home");
+
+    var response = await http.get(url , headers: {
+      "lang" : "en" ,
+      "Authorization" : MyApp.getUserToken()!
+    }
+    );
+
+    var body = response.body ;
+    var json = jsonDecode(body);
+    var productHomeObject = ProductsHomeModel.fromJson(json);
+    return productHomeObject ;
   }
 
 
